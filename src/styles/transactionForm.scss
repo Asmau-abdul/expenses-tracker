@@ -1,0 +1,30 @@
+.transaction-form-row{
+    .transaction-form{
+        margin: 2rem 0;
+        border: 1px solid #959595;
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(2, auto);
+        gap: 20px;
+        padding: 20px 15px;
+        border-radius: 10px;
+
+        input{
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid black;
+        }
+
+        select{
+            border: 1px solid black;
+        }
+        
+        button{
+            grid-column: span 2;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid black;
+            background-color: #ffff;
+        }
+    }
+}

@@ -1,5 +1,9 @@
 import { useState } from 'react'
 import './App.css'
+import Summary from './components/Summary'
+import TransactionForm from './components/TransactionForm'
+import FilterBar from './components/FilterBar'
+import TransactionList from './components/TransactionList'
 
 function App() {
   // const [transaction, setTransaction] = useState([])
@@ -20,55 +24,15 @@ function App() {
           <p>Track your income and spending</p>
         </div>
 
-        <div className='summary'>
-          <div className="balance">
-            <p>Balance</p>
-            <h3>$1,240</h3>
-          </div>
-
-          <div className="income">
-            <p>Income</p>
-            <h3>$2,000</h3>
-          </div>
-
-          <div className="expenses">
-            <p>Expenses</p>
-            <h3>$760</h3>
-          </div>
-        </div>
+        <Summary/>
 
         <div className='transaction-form'>
-          <div>
-            <input type="text" placeholder='Description e.g. Lunch' className='description' />
-            <input type="text" placeholder='Amount e.g. 25' className='amount' />
-            <select name="category" id="category">
-              <option value="income">Income</option>
-              <option value="food">Food</option>
-              <option value="transport">Transport</option>
-              <option value="health">Health</option>
-            </select>
-            <input type="date" name="" id="" />
-            <input type="submit" value={'Add transaction'}/>
-          </div>
+          <TransactionForm/>
 
-          <div className='filter'>
-            <p>All</p>
-            <p>Income</p>
-            <p>Food</p>
-            <p>Transport</p>
-            <p>Health</p>
-          </div>
+          <FilterBar onFilter={setFilter} currentFilter={filter}/>
 
-          <div>
-            {transaction.map((item) => (
-              <div>
-                <p>{item.description}</p>
-                <p>{item.category}</p>
-                <p>{item.date}</p>
-                <p>{item.amount}</p>
-              </div>
-            ))}
-          </div>
+          <TransactionList transactions={transaction}/>
+
         </div>
       </div>
     </>
