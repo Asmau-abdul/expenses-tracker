@@ -10,16 +10,20 @@ function App() {
   const [filter, setFilter] = useState('all')
 
 
-  const transaction = [
+  const [transactions, setTransactions] = useState([
     {id: 1, description: 'Salary', amount: 2000, category: 'income', date: '2026-07-22'},
     {id: 2, description: 'Gym membership', amount: -40, category: 'Health', date: '2026-07-23'},
     {id: 3, description: 'Uber ride', amount: -8, category: 'Transport', date: '2026-07-24'},
     {id: 4, description: 'Lunch', amount: -12, category: 'Food', date: '2026-07-25'},
-  ]
+  ])
 
-  const filteredTransactions = filter === 'all' ? transaction : transaction.filter(
+  const filteredTransactions = filter === 'all' ? transactions : transactions.filter(
     t => t.category.toLowerCase() === filter
   )
+
+  const handleAdd = (newTransaction) => {
+    setTransactions(prev => [...prev, newTransaction])
+  }
 
   return (
     <>
@@ -29,9 +33,9 @@ function App() {
           <p>Track your income and spending</p>
         </div>
 
-        <Summary items={transaction}/>
+        <Summary items={transactions}/>
 
-        <TransactionForm/>
+        <TransactionForm onAdd={handleAdd}/>
 
         <FilterBar onFilter={setFilter} currentFilter={filter}/>
 

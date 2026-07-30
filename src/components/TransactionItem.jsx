@@ -9,6 +9,7 @@ const TransactionItem = ({transactionItem}) => {
             <p>{transactionItem.category}</p>
             <p>{transactionItem.date}</p>
             <p>{transactionItem.amount > 0 ? `+$${transactionItem.amount}` : `-$${Math.abs(transactionItem.amount)}`}</p>
+            {/* <p>{transactionItem.category === 'income' ?}</p> */}
         </div>
     </>
   )

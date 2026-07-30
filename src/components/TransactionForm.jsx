@@ -1,33 +1,36 @@
 import React, { useState } from 'react'
 import '../styles/transactionForm.scss'
 
-const TransactionForm = () => {
+const TransactionForm = ({onAdd}) => {
 
     const [description, setDescription] = useState('')
     const [amount, setAmount] = useState('')
     const [category, setCategory] = useState('')
     const [date, setDate] = useState('')
-    const [newTransaction, setNewTransaction] = useState([])
 
     const handleCategory = (e) => {
         setCategory(e.target.value)
     }
 
-    const submitForm = (e) => {
-        e.preventDefault()
+    const submitForm = () => {
+        if(!description || !amount || !category || !date) return
+        const parsedAmount = category === 'income' ? 
+        Math.abs(Number(amount))
+        : -Math.abs(Number(amount))
 
-        setNewTransaction((prev) => [...prev, {
-            description: description,
-            amount: amount,
-            category: category,
-            date: date
-        }])
-        // setDescription('')
-        // setAmount('')
-        // setCategory('')
-        // setDate('')
+        onAdd( {
+            id: crypto.randomUUID(),
+            description,
+            amount: parsedAmount,
+            category,
+            date
+        })
+        setDescription('')
+        setAmount('')
+        setCategory('')
+        setDate('')
 
-        console.log(newTransaction)
+        // console.log(newTransaction)
     }
 
   return (
@@ -47,13 +50,6 @@ const TransactionForm = () => {
                 <button onClick={submitForm}>Add transaction</button>
             </div>
 
-
-            <div>
-                {description} <br />
-                {amount} <br />
-                {date} <br />
-                {category}
-            </div>
         </div>
     </>
   )
