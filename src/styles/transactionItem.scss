@@ -1,8 +1,32 @@
 .transaction-item{
     display: flex;
-    gap: 10px;
-    margin: 10px 0;
+    justify-content: space-between;
+    margin: 20px 0;
     padding: 15px;
-    border-radius: 8px;
-    background-color: rgba($color: #959595, $alpha: 0.1);
+    border-radius: 15px;
+    background-color: #fff;
+
+    .leftSide{
+        display: flex;
+        gap: 10px;
+
+        h3{
+            font-weight: 600;
+            font-size: 16px;
+        }
+    }
+
+    .rightSide{
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        .greenColor{
+            color: #1a9707;
+        }
+
+        .redColor{
+            color: #b31010;
+        }
+    }
 }

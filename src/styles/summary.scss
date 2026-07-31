@@ -5,8 +5,39 @@
     margin: 1.5rem 0;
 
     div{
-        background-color: rgba(237, 230, 230, 0.3);
-        border-radius: 5px;
-        padding: 10px 18px;
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 14px 18px;
+        border: 1.5px solid #e8e6e3;
+
+        p{
+            font-size: 13px;
+            color: #7a7878;
+            margin-bottom: 4px;
+        }
+
+        h3{
+            font-size: 24px;
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+    }
+
+    @media (max-width: 600px) {
+        div{
+            padding: 10px 12px;
+
+            h3{
+                font-size: 18px;
+            }
+
+            p{
+                font-size: 12px;
+            }
+        }
+    }
+
+    @media (max-width: 400px) {
+        grid-template-columns: 1fr;
     }
 }

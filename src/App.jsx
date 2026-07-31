@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import Summary from './components/Summary'
 import TransactionForm from './components/TransactionForm'
@@ -10,12 +10,19 @@ function App() {
   const [filter, setFilter] = useState('all')
 
 
-  const [transactions, setTransactions] = useState([
-    {id: 1, description: 'Salary', amount: 2000, category: 'income', date: '2026-07-22'},
-    {id: 2, description: 'Gym membership', amount: -40, category: 'Health', date: '2026-07-23'},
-    {id: 3, description: 'Uber ride', amount: -8, category: 'Transport', date: '2026-07-24'},
-    {id: 4, description: 'Lunch', amount: -12, category: 'Food', date: '2026-07-25'},
-  ])
+  const [transactions, setTransactions] = useState(() => {
+    const saved = localStorage.getItem('transactions')
+    return saved ? JSON.parse(saved) : [
+      {id: crypto.randomUUID(), description: 'Salary', amount: 2000, category: 'income', date: '2026-07-22'},
+      {id: crypto.randomUUID(), description: 'Gym membership', amount: -40, category: 'health', date: '2026-07-23'},
+      {id: crypto.randomUUID(), description: 'Uber ride', amount: -8, category: 'transport', date: '2026-07-24'},
+      {id: crypto.randomUUID(), description: 'Lunch', amount: -12, category: 'food', date: '2026-07-25'},
+    ]
+  })
+
+  useEffect(() => {
+    localStorage.setItem('transactions', JSON.stringify(transactions))
+  },[transactions])
 
   const filteredTransactions = filter === 'all' ? transactions : transactions.filter(
     t => t.category.toLowerCase() === filter
@@ -23,6 +30,10 @@ function App() {
 
   const handleAdd = (newTransaction) => {
     setTransactions(prev => [...prev, newTransaction])
+  }
+
+  const handleDelete = (id) => {
+    setTransactions(prev => prev.filter(f => f.id !== id))
   }
 
   return (
@@ -39,7 +50,7 @@ function App() {
 
         <FilterBar onFilter={setFilter} currentFilter={filter}/>
 
-        <TransactionList transactions={filteredTransactions}/>
+        <TransactionList transactions={filteredTransactions} handleDelete={handleDelete}/>
 
       </div>
     </>
