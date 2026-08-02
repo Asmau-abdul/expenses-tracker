@@ -1,32 +1,105 @@
 .transaction-item{
     display: flex;
     justify-content: space-between;
-    margin: 20px 0;
-    padding: 15px;
-    border-radius: 15px;
+    align-items: center;
+    margin-bottom: 8px;
+    padding: 12px 16px;
+    border-radius: 12px;
     background-color: #fff;
+    border: 1.5px solid #e8e6e3;
+    transition: transform 0.15s;
+
+    &:hover{
+        transform: translateX(3px);
+    }
 
     .leftSide{
         display: flex;
-        gap: 10px;
+        align-items: center;
+        gap: 12px;
+
+        .t-icon {
+            // width: 30px;
+            // height: px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
 
         h3{
-            font-weight: 600;
-            font-size: 16px;
+            font-weight: 500;
+            font-size: 14px;
+            color: #1a1a2e;
+            margin-bottom: 2px;
+        }
+
+        p{
+            font-size: 12px;
+            color: #aaa;
         }
     }
 
     .rightSide{
         display: flex;
         align-items: center;
-        gap: 15px;
+        gap: 12px;
 
         .greenColor{
             color: #1a9707;
+            font-weight: 500;
+            font-size: 15px;
         }
 
         .redColor{
             color: #b31010;
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        button {
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            border: 1.5px solid #e8e6e3;
+            background: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #aaa;
+            transition: all 0.15s;
+
+            &:hover {
+                background: #fcebeb;
+                border-color: #f09595;
+                color: #b31010;
+            }
+        }
+    }
+
+    @media (max-width: 480px) {
+        padding: 10px 12px;
+
+        .leftSide{
+            gap: 8px;
+        }
+
+        h3{
+            font-size: 13px;
+        }
+
+        p{
+            font-size: 11px;
+        }
+    }
+
+    .rightSide{
+        gap: 8px;
+
+        .greenColor, .redColor{
+            font-size: 13px;
         }
     }
 }

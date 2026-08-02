@@ -26,7 +26,7 @@ const TransactionItem = ({transactionItem, handleDelete}) => {
     <>
         <div className='transaction-item'>
             <div className='leftSide'>
-              <p>{getCategoryIcon(transactionItem.category)}</p>
+              <p className='t-icon'>{getCategoryIcon(transactionItem.category)}</p>
               <div>
                 <h3>{transactionItem.description}</h3>
                 <p><span>{transactionItem.category} . </span> <span>{transactionItem.date}</span></p>
