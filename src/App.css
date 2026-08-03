@@ -8,6 +8,15 @@
 body{
   padding: 1.5rem 2.5rem;
   background-color: rgba(237, 230, 230, 0.3);
+  min-height: 100vh;
+  height: fit-content;
+  margin: auto;
+}
+
+.app-container{
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
 }
 
 .title-heading h1{

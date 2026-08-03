@@ -1,6 +1,6 @@
 import React from 'react'
 import '../styles/transactionItem.scss'
-import { Banknote, Car, HeartPulse, Trash2, UtensilsCrossed, Wallet } from 'lucide-react'
+import { Banknote, Car, HeartPulse, Trash2, UtensilsCrossed, Wallet, Wrench } from 'lucide-react'
 
 const TransactionItem = ({transactionItem, handleDelete}) => {
   const getCategoryIcon = (category) => {
@@ -13,6 +13,9 @@ const TransactionItem = ({transactionItem, handleDelete}) => {
 
       case 'health': return <HeartPulse size={50} style={{backgroundColor: 'rgba(7, 144, 151, 0.5)', 
         color: 'rgb(7, 144, 151)', padding: '12px', borderRadius: '8px'}}/>
+
+      case 'utility': return <Wrench size={50} style={{backgroundColor: 'rgba(168, 85, 247,0.5)', 
+        color: 'rgb(168, 85, 247)', padding: '12px', borderRadius: '8px'}}/>
 
       case 'income': return <Banknote size={50} style={{backgroundColor: 'rgba(26, 151, 7, 0.5)', 
         color: 'rgb(26, 151, 7)', padding: '12px', borderRadius: '8px'}}/>
@@ -33,7 +36,7 @@ const TransactionItem = ({transactionItem, handleDelete}) => {
               </div>
             </div>
             <div className='rightSide'>
-              <p className={transactionItem.amount > 0 ? 'greenColor' : 'redColor'}>{transactionItem.amount > 0 ? `+$${transactionItem.amount}` : `-$${Math.abs(transactionItem.amount)}`}</p>
+              <p className={transactionItem.amount > 0 ? 'greenColor' : 'redColor'}>{transactionItem.amount > 0 ? `+₦${transactionItem.amount.toLocaleString()}` : `-₦${Math.abs(transactionItem.amount.toLocaleString())}`}</p>
               <button onClick={() => handleDelete(transactionItem.id)}>
                 <Trash2 style={{backgroundColor: '#fff', padding: '5px', outline: 'none', border: 'none'}}/>
               </button>

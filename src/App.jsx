@@ -4,6 +4,7 @@ import Summary from './components/Summary'
 import TransactionForm from './components/TransactionForm'
 import FilterBar from './components/FilterBar'
 import TransactionList from './components/TransactionList'
+import SpendingChart from './components/SpendingChart'
 
 function App() {
   // const [transaction, setTransaction] = useState([])
@@ -17,6 +18,7 @@ function App() {
       {id: crypto.randomUUID(), description: 'Gym membership', amount: -40, category: 'health', date: '2026-07-23'},
       {id: crypto.randomUUID(), description: 'Uber ride', amount: -8, category: 'transport', date: '2026-07-24'},
       {id: crypto.randomUUID(), description: 'Lunch', amount: -12, category: 'food', date: '2026-07-25'},
+      {id: crypto.randomUUID(), description: 'Light', amount: -10, category: 'utility', date: '2026-07-26'},
     ]
   })
 
@@ -38,13 +40,15 @@ function App() {
 
   return (
     <>
-      <div>
+      <div className='app-container'>
         <div className='title-heading'>
           <h1>Expense tracker</h1>
           <p>Track your income and spending</p>
         </div>
 
         <Summary items={transactions}/>
+
+        <SpendingChart transactions={transactions}/>
 
         <TransactionForm onAdd={handleAdd}/>
 

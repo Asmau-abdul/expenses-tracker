@@ -18,6 +18,11 @@ const TransactionForm = ({onAdd}) => {
         Math.abs(Number(amount))
         : -Math.abs(Number(amount))
 
+        if (isNaN(parsedAmount)){
+            alert('please enter a valid amount')
+            return
+        }
+
         onAdd( {
             id: crypto.randomUUID(),
             description,
@@ -45,6 +50,7 @@ const TransactionForm = ({onAdd}) => {
                     <option value="food">Food</option>
                     <option value="transport">Transport</option>
                     <option value="health">Health</option>
+                    <option value="utility">Utility</option>
                 </select>
                 <input type="date" value={date} onChange={(e) => setDate(e.target.value)}/>
                 <button onClick={submitForm}>Add transaction</button>

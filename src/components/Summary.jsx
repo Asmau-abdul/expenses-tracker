@@ -7,10 +7,12 @@ const Summary = ({items}) => {
     let expenses = 0
 
     {items.forEach(t => {
+        const amt = Number(t.amount)
+        if (isNaN(amt)) return
         if(t.category === 'income') {
-            income += t.amount
+            income += amt
         }else{
-            expenses += Math.abs(t.amount)
+            expenses += Math.abs(amt)
         }
     })}
 
@@ -20,17 +22,17 @@ const Summary = ({items}) => {
         <div className='summary-row'>
             <div className="balance">
                 <p>Balance</p>
-                <h3 style={balance > 0 ? {color: '#1a9707'} : {color: '#b31010'}}>${balance.toLocaleString()}</h3>
+                <h3 style={{color: '#1a1a2e'} }>₦{balance.toLocaleString()}</h3>
             </div>
 
             <div className="income">
                 <p>Income</p>
-                <h3 style={{color: '#1a9707'}}>${income.toLocaleString()}</h3>
+                <h3 style={{color: '#1a9707'}}>₦{income.toLocaleString()}</h3>
             </div>
 
             <div className="expenses">
                 <p>Expenses</p>
-                <h3 style={{color: '#b31010'}}>${expenses.toLocaleString()}</h3>
+                <h3 style={{color: '#b31010'}}>₦{expenses.toLocaleString()}</h3>
             </div>
         </div>
     </>

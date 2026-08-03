@@ -5,7 +5,7 @@ const FilterBar = ({onFilter, currentFilter}) => {
   return (
     <>
         <div className='filter-bar'>
-            {['all', 'income', 'food', 'transport', 'health'].map( f => (
+            {['all', 'income', 'food', 'transport', 'health', 'utility'].map( f => (
                 <button key={f} 
                 onClick={() => onFilter(f)}
                 className={currentFilter === f ? 'active' : ''}>
